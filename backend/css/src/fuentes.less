@@ -1,0 +1,120 @@
+//  F U E N T E S
+
+/*@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&.css");*/
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url(OpenSans-Light.eot);
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(OpenSans-Light.eot) format('embedded-opentype'), url(OpenSans-Light.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(OpenSans.eot);
+  src: local('Open Sans'), local('OpenSans'), url(OpenSans.eot) format('embedded-opentype'), url(OpenSans.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url(OpenSans-Semibold.eot);
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(OpenSans-Semibold.eot) format('embedded-opentype'), url(OpenSans-Semibold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+
+  src: url(OpenSans-Bold.eot);
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(OpenSans-Bold.eot) format('embedded-opentype'), url(OpenSans-Bold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: url(OpenSans-Extrabold.eot);
+  src: local('Open Sans Extrabold'), local('OpenSans-Extrabold'), url(OpenSans-Extrabold.eot) format('embedded-opentype'), url(OpenSans-Extrabold.woff) format('woff');
+}
+
+.fuente(@weight:400; @size:14px; @font-family:'Open Sans', sans-serif){
+  font:@arguments;
+}
+
+@font-face {
+    font-family: 'genotipo-iconsregular';
+    src: url('genotipo-icons-regular-webfont.eot');
+    src: url('genotipo-icons-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('genotipo-icons-regular-webfont.woff') format('woff'),
+         url('genotipo-icons-regular-webfont.ttf') format('truetype'),
+         url('genotipo-icons-regular-webfont.svg#genotipo-iconsregular') format('svg');
+    font-weight: 300;
+    font-style: 300;
+}
+
+//  U T I L I C O N S - [Utilicons]
+.sizeoverride(@size){
+	&:before{
+		font-size: unit(@size,px);
+		line-height: unit(@size,px);
+		height: unit(@size,px);
+		width: unit(@size,px);
+	}
+}
+.settings(@content:"\e001"; @height:30; @lh:@height){
+	&:before{
+		content:@content;
+		font-family: 'genotipo-iconsregular';
+		font-size: unit(@height,px);
+		line-height: unit(@lh,px);
+		height: unit(@height,px);
+		width: unit(@height,px);
+		-webkit-font-smoothing: antialiased; // Improves the rendering of icons
+    font-style: normal;
+    text-indent: 0;
+    speak: none; // This prevents screen readers from pronouncing the pseudo element text content used to trigger the icon font
+    vertical-align: text-top;
+	}
+}
+[class^="utilicons"]{
+	display:inline-block;
+	vertical-align:middle;
+}
+.utilicons {
+	//Colores de utilicons
+	&:before{color:@@colorNormal;}
+	&-inherit:before{color:inherit;}
+	&-white:before{color:@white;}
+	&-red:before{color:@red;}
+	&-yellow:before{color:@yellow;}
+
+	//Los utilicons per se
+	&-warning {.settings("\e003",50);}
+	&-thumbsup {.settings("\e004",50);}
+	&-chevron-right {.settings("\e012",15);}
+	&-menu{.settings("\e002",22);}
+	&-circle {.settings("\e001",25);}
+	&-flag {.settings("\e005",20);}
+	&-check {.settings("\e006",20);}
+	&-right {.settings("\e008",14);}
+	&-down {.settings("\e009",14);}
+	&-left {.settings("\e00a",14);}
+	&-logout {.settings("\e015",20);}
+	&-key {.settings("\e014",20);}
+	&-help {.settings("\e013",20);}
+	&-user{.settings("\e00b");}
+	&-editar{.settings("\e016",15);}
+	&-borrar{.settings("\e017",15);} //minus
+	&-plus{.settings("\e01f",14)} //plus
+	&-desc{.settings("\e01a",10);}
+	&-asc{.settings("\e01b",10);}
+	&-save{.settings("\e018",15);}
+	&-groups{.settings("\e019");}
+	&-business{.settings("\e01e");}
+
+	//Size Override
+	&-s30{.sizeoverride(30);}
+	&-s14{.sizeoverride(14);}
+	&-s35{.sizeoverride(35);}
+}

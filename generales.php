@@ -1,8 +1,9 @@
 <?php
+$codigo = $_GET["secc"];
 $apiKey = "j7k63hxbg9fcekguh6pf73jt";
 $Secret = "W3MXcU22k7";
 $signature = hash("sha256", $apiKey.$Secret.time());
-$endpoint = "https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels?fields=all&countryCode=MX&language=CAS&from=1&to=25";
+$endpoint = "https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels/$codigo";
 
 $curl = curl_init();
 curl_setopt_array($curl, array(
@@ -12,16 +13,54 @@ curl_setopt_array($curl, array(
 ));
 $resp = curl_exec($curl);
 $respuesta = json_decode($resp, true);
-$hoteles = $respuesta["hotels"];
-foreach ($hoteles as $hotel => $h) {
-	echo $h["name"]["content"];
-	echo $h["code"];
-	$imagenes =  $h["images"];
-	for ($i=0; $i < 2; $i++) { 
+$hotel = $respuesta["hotel"];
+// print("<pre>".print_r($respuesta,true)."</pre>");
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Nombre: <?php echo $hotel["name"]["content"]; ?></h1>
+	<p><strong>Descripción:</strong> <?php echo $hotel["description"]["content"]; ?></p>
+	<p><strong>País:</strong> <?php echo $hotel["country"]["description"]["content"]; ?></p>
+	<p><strong>Estado:</strong> <?php echo $hotel["state"]["name"] ?></p>
+	<p><strong>Categoría:</strong> <?php echo $hotel["category"]["description"]["content"]; ?></p>
+	<p><strong>Dirección:</strong> <?php echo $hotel["address"]["content"]; ?></p>
+	<p><strong>Código Postal:</strong> <?php echo $hotel["postalCode"]; ?></p>
+	<p><strong>Ciudad:</strong> <?php echo $hotel["city"]["content"]; ?></p>
+	<p><strong>Web:</strong> <?php echo $hotel["web"]; ?></p>
+	<p>Cuartos</p>
+	<ul>
+		<?php 
+		$cuartos = $hotel["rooms"];
+		foreach ($cuartos as $key => $cuarto) {
+			?>
+			<li><?php echo $cuarto["description"]; ?></li>
+			<?php
+		}
 		?>
-		<img src="http://photos.hotelbeds.com/giata/<?php echo $imagenes[$i]["path"] ?>" alt="">
+	</ul>
+	<p>Facilities</p>
+	<ul>
+		<?php 
+		$facilities = $hotel["facilities"];
+		foreach ($facilities as $k => $fac) {
+			?>
+			<li><?php echo $fac["description"]["content"]; ?></li>
+			<?php
+		}
+		?>
+	</ul>
+	<?php 
+	$imagenes = $hotel["images"];
+	foreach ($imagenes as $ke => $imagen) {
+		?>
+		<img src="http://photos.hotelbeds.com/giata/<?php echo $imagen["path"]; ?>"> <br>
 		<?php
 	}
-	// print("<pre>".print_r($h,true)."</pre>");
-}
-?>
+	?>
+</body>
+</html>

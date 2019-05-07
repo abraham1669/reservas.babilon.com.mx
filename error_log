@@ -1,0 +1,9 @@
+[24-Apr-2019 03:32:12 UTC] PHP Notice:  Undefined index: images in /home/babilonc/public_html/reservas.babilon.com.mx/generales.php on line 19
+[28-Apr-2019 03:49:36 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in /home/babilonc/public_html/reservas.babilon.com.mx/includes/PHPMailer/PHPMailerAutoload.php on line 45
+[28-Apr-2019 03:49:38 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in /home/babilonc/public_html/reservas.babilon.com.mx/includes/PHPMailer/PHPMailerAutoload.php on line 45
+[28-Apr-2019 03:49:56 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in /home/babilonc/public_html/reservas.babilon.com.mx/includes/PHPMailer/PHPMailerAutoload.php on line 45
+[28-Apr-2019 03:51:59 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in /home/babilonc/public_html/reservas.babilon.com.mx/includes/PHPMailer/PHPMailerAutoload.php on line 45
+[28-Apr-2019 03:52:00 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in /home/babilonc/public_html/reservas.babilon.com.mx/includes/PHPMailer/PHPMailerAutoload.php on line 45
+[28-Apr-2019 04:39:36 UTC] PHP Notice:  Undefined index: images in /home/babilonc/public_html/reservas.babilon.com.mx/generales.php on line 19
+[30-Apr-2019 03:27:00 UTC] PHP Notice:  Undefined index: hotels in /home/babilonc/public_html/reservas.babilon.com.mx/generales.php on line 15
+[30-Apr-2019 03:27:00 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/babilonc/public_html/reservas.babilon.com.mx/generales.php on line 16
