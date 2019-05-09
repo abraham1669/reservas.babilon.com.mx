@@ -1,4 +1,5 @@
 <?php
+//EDit
 use Medoo\Medoo;
 if ($_SERVER['HTTP_HOST'] == "localhost") {
  $database = new Medoo([
