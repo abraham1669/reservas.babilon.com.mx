@@ -15,10 +15,9 @@
                         <h6 class="logo visible-xs visible-sm"><a href="<?= base_url; ?>"><?=empresa?></a></h6>
                         <ul class="tcenter">
                             <li <?php if($sec === "home"){echo "class=\"activo\"";}?>><a href="<?= base_url; ?>">HOME</a></li>
-                            <li <?php if($sec === "babilon"){echo "class=\"activo\"";}?>><a href="<?= base_url; ?>babilon-travel">BABILON TRAVEL</a></li>
-                            <li <?php if($sec === "trips"){echo "class=\"activo\"";}?>><a href="<?= base_url; ?>trips">TRIPS</a></li>
+                            <li <?php if($sec === "babilon"){echo "class=\"activo\"";}?>><a href="<?= base_url; ?>hotels">HOTELS</a></li>
                             <li <?php if($sec === "blog"){echo "class=\"activo\"";}?>><a href="<?= base_url; ?>blog">BLOG</a></li>
-                            <li><a href="javascript:;" class="btn-gral">CONTACT US</a></li>
+                            <li><a href="<?= base_url; ?>contacto" class="btn-gral">CONTACT US</a></li>
                             <li><a href="javascript:;" class="idiomas"><img src="<?=base_url;?>img/mexico.png" alt="" class="idioma"> ES</a></li>
                         </ul>
                     </nav>

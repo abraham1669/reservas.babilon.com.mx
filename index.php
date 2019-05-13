@@ -4,37 +4,15 @@ require_once 'includes/_head.php';
 // Incruste contenido adicional dentro de <head></head> si requiere agregar CSS o cualquier otra etiqueta
 require_once 'includes/_menu.php';
 ?>
-
-
 <div class="home">
 	<div class="box">
 		<div class="content">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-4">
-						<div class="book black">
-							<h1>BOOK A HOTEL</h1>
-							<div class="h10"></div>
-							<input type="text" name="destino" placeholder="Destination" id="destino" />
-							<input type="hidden" id="valor" name="valor">
-							<div class="row">
-								<div class="col-sm-6"><input type="text" id="from" name="from" placeholder="Check-in"></div>
-								<div class="col-sm-6"><input type="text" id="to" name="to" placeholder="Check-out"></div>
-								<div class="col-sm-4">
-									<label>Rooms</label>
-									<div class="select"><select><option>0</option></select></div>
-								</div>
-								<div class="col-sm-4">
-									<label>Adults</label>
-									<div class="select"><select><option>0</option></select></div>
-								</div>
-								<div class="col-sm-4">
-									<label>Children</label>
-									<div class="select"><select><option>0</option></select></div>
-								</div>
-							</div>
-							<a href="javascript:;" class="btn-gral blue">SEARCH HOTELS</a>
-						</div>
+						<?php 
+						$black = "black";
+						require_once 'includes/_book_box.php'; ?>
 					</div>
 					<div class="col-sm-5">
 						<h2>VIAJA POR TODO EL MUNDO</h2>
@@ -77,45 +55,30 @@ require_once 'includes/_menu.php';
 			</nav>
 		</div>
 		<div class="h20"></div>
-
 		<?php
-		$apiKey = "j7k63hxbg9fcekguh6pf73jt";
-		$Secret = "W3MXcU22k7";
-		$signature = hash("sha256", $apiKey.$Secret.time());
-		$minimo = rand(1,3390);
-		$maximo =  intval($minimo + 3);
-		$endpoint = "https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels?fields=all&countryCode=MX&language=CAS&from=$minimo&to=$maximo";
-
-		$curl = curl_init();
-		curl_setopt_array($curl, array(
-			CURLOPT_RETURNTRANSFER => 1,
-			CURLOPT_URL => $endpoint,
-			CURLOPT_HTTPHEADER => ['Accept:application/json' , 'Api-key:'.$apiKey.'', 'X-Signature:'.$signature.'']
-		));
-		$resp = curl_exec($curl);
-		$respuesta = json_decode($resp, true);
-		// print("<pre>".print_r($respuesta,true)."</pre>");
-		$hoteles = $respuesta["hotels"];
+		$hoteles = $database->rand("hb_hotels", ["images","s2c", "name", "description","code"],["LIMIT" => 4]);
 		foreach ($hoteles as $key => $hotel) {
+			$imagenes = $hotel["images"];
+			$photos =  explode("**",$imagenes);
 			?>
 
 			<div class="col-sm-3">
 				<div class="destino">
 					<img src="" alt="">
-					<div class="imagen" style="background-image: url('http://photos.hotelbeds.com/giata/<?php echo $hotel["images"][0]["path"] ?>');"></div>
+					<div class="imagen" style="background-image: url('http://photos.hotelbeds.com/giata/<?php echo $photos[0] ?>');"></div>
 					<div class="descripcion">
 						<div class="stars">
 							<?php 
 							$estrellas = convierte_estrellas($hotel["s2c"]);
-							echo $estrellas;
+							echo $estrellas["texto"];
 							?>
 						</div>
 
 						<div class="h15"></div>
 
-						<h4><?php echo $hotel["name"]["content"]; ?></h4>
+						<h4><?php echo $hotel["name"]; ?></h4>
 						<div class="h10"></div>
-						<p><?php echo custom_echo($hotel["description"]["content"]); ?></p>
+						<p><?php echo custom_echo($hotel["description"]); ?></p>
 					</div>
 					<a href="<?php echo base_url; ?>hoteles/<?php echo $hotel["code"]; ?>" class="btn-gral blue">SEE MORE</a>
 				</div>
@@ -196,7 +159,7 @@ require_once 'includes/_menu.php';
 								<h3><?php echo $not["titulo_not"]; ?></h3>
 								<div class="h20"></div>
 								<p><?php echo $not["intro_not"]; ?></p>
-								<a href="<?php echo base_url; ?>noticias/<?php echo $not["url_not"]; ?>" class="fright a-blue">READ MORE <i class="fas fa-chevron-right"></i></a>
+								<a href="<?php echo base_url; ?>blog/<?php echo $not["url_not"]; ?>" class="fright a-blue">READ MORE <i class="fas fa-chevron-right"></i></a>
 							</div>
 						</div>
 					</div>
@@ -209,7 +172,7 @@ require_once 'includes/_menu.php';
 		<div class="h10"></div>
 
 		<div class="col-sm-12 tcenter">
-			<a href="<?php echo base_url; ?>noticias/" class="a-blue">ALL ARTICLES <i class="fas fa-chevron-right"></i></a>
+			<a href="<?php echo base_url; ?>blog/" class="a-blue">ALL ARTICLES <i class="fas fa-chevron-right"></i></a>
 		</div>
 	</div>
 </div>

@@ -3,11 +3,10 @@
 		<div class="row">
 			<div class="col-sm-12 tcenter">
 				<nav>
-					<a href="javascritp:;">HOME</a>
-					<a href="javascritp:;">BABILON TRAVEL</a>
-					<a href="javascritp:;">TRIPS</a>
-					<a href="javascritp:;">BLOG</a>
-					<a href="javascritp:;">CONTACT US</a>
+					<a href="<?= base_url; ?>">HOME</a>
+					<a href="<?= base_url; ?>hotels">HOTELS</a>
+					<a href="<?= base_url; ?>blog">BLOG</a>
+					<a href="<?= base_url; ?>contacto">CONTACT US</a>
 				</nav>
 
 				<div class="h10"></div>

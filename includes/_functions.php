@@ -25,8 +25,8 @@ define("base_url", "http://" . $_SERVER['HTTP_HOST'] . "/" . $local); // RUTA AB
 define("base_dir", realpath(__DIR__ . '/../') . DIRECTORY_SEPARATOR);
 define("upload_dir", base_dir . 'cache' . DIRECTORY_SEPARATOR);
 
-define('captcha_front', 'reemplazar-por-clave-de-sitio'); // KEY DEL CAPTCHA - CLAVE DEL SITIO
-define('captcha_back', 'reemplazar-por-clave-secreta'); // KEY DEL CAPTCHA - CLAVE SECRETA
+define('captcha_front', '6Ld7IqMUAAAAACp8atmfgWiANi8fObIc_q6XIiYv'); // KEY DEL CAPTCHA - CLAVE DEL SITIO
+define('captcha_back', '6Ld7IqMUAAAAANo0PymHVJr1qtQoF7mkEtUiGqAV'); // KEY DEL CAPTCHA - CLAVE SECRETA
 
 //Configuracion para poner los errores y warnings en los logs
 ini_set("log_errors", "1");
@@ -88,24 +88,32 @@ function convierte_estrellas($s2c){
     switch ($s2c) {
         case '1*':
         $valor = 1;
+        $recomendacion = "Muy poco recomendable";
         break;
         case '2*':
         $valor = 2;
+        $recomendacion = "Poco recomendable";
         break;
         case '3*':
         $valor = 3;
+        $recomendacion = "Recomendable";
         break;
         case '4*':
         $valor = 4;
+        $recomendacion = "Bastante recomendable";
         break;
         default:
         $valor =  5;
+        $recomendacion = "Excelente";
         break;
     }
-    for ($i=0; $i < $valor-1; $i++) { 
-        $texto .= "<img src='img/star.png' alt='Star' />";
+    for ($i=1; $i <= $valor; $i++) { 
+        $texto .= "<img src='".base_url."img/star.png' alt='Star' />";
     }
-    return $texto;
+    $arreglo["texto"] = $texto;
+    $arreglo["valor"] = $valor;
+    $arreglo["recomendacion"] = $recomendacion;
+    return $arreglo;
 }
 function contacto(){
     #limpia los espacios en los valores los arreglos

@@ -37,7 +37,7 @@ h6.logo{
     span{display: none;}
 }
 
-h1{font-size: 20px; font-weight: bold;}
+h1{font-size: 40px; font-weight: bold;}
 h2{font-size: 22px;}
 h3{font-size: 18px;}
 h4{font-size: 15px;}
@@ -58,6 +58,11 @@ ul{
 .lista li{ 
     padding-left: 5px; line-height: 24px; margin-bottom: 5px; position: relative; padding-left: 17px;
     &:before{content: ''; background: url('../img/bullet.svg') no-repeat top left; width: 8px; height: 4px; display: inline-block; position: absolute; left: 0; top: 5px;}
+}
+
+.amenities li{ 
+    padding-left: 5px; line-height: 24px; margin-bottom: 5px; position: relative; padding-left: 17px; width: 33.33%; float: left;
+    &:before{content: ''; background: url('../img/check.svg') no-repeat top left; background-size: cover; width: 15px; height: 15px; display: inline-block; position: absolute; left: 0; top: 5px;}
 }
 
 
@@ -144,6 +149,7 @@ ul.breadcrumb {padding: 10px 16px; list-style: none; font-size: 11px;
     h2, h3{color: #fff;}
     h2{font-size: 30px; font-weight: bold; margin-top: 75px;}
     h3{font-size: 18px; line-height: 24px;}
+    &.bck-blog{background-image: url('../img/blog.jpg');}
 }
 
 .pleca-gris{
@@ -177,6 +183,7 @@ ul.breadcrumb {padding: 10px 16px; list-style: none; font-size: 11px;
 .a-blue{
     color: @primario; font-weight: 500;
 }
+
 
 .experiences .imagen{width: 120px; height: 120px; display: inline-block; 
     img{border-radius: 50%}
@@ -217,6 +224,25 @@ ul.breadcrumb {padding: 10px 16px; list-style: none; font-size: 11px;
     h5{height: 32px;}
 }
 
+.rooms{
+    background: #eeeeee; position: relative; overflow: hidden; margin-bottom: 15px;
+    .imagen{width: 100%; height: 195px; display: inline-block; background-size: cover; background-repeat: no-repeat; background-position: center center; float: left;}
+    .contenido{    width: 100%; padding: 30px 30px 20px 0; display: inline-block;} 
+    .bx1{float: left; max-width: 300px;}
+    .bx2{
+        float: right; text-align: right;
+        p{margin-bottom: 0px;}
+    }
+    .stars{margin-bottom: 3px;}
+    .price{font-size: 22px; color:@primario; margin-bottom: 5px;}
+
+    h5{font-weight: 700;}
+    .breve{font-size: 13px; margin-bottom: 20px;}
+    .icons{
+        span{display: inline-block; width: 20px; color: @primario; margin-right: 10px;}
+    }
+}
+
 #filters{
     i{color:@primario;}
 }
@@ -239,6 +265,20 @@ ul.breadcrumb {padding: 10px 16px; list-style: none; font-size: 11px;
     border-radius: 99px !important;
 }
 
+
+.box-gris-interna{
+    background: #ededed; padding: 30px 0;
+    .address{color: @primario; }
+}
+
+.buscador-lineal{
+    .btn-gral{width: 100%; text-align: center; line-height: 30px;}
+    label{position: absolute; top: -26px;}
+}
+
+.icono-descripcion{
+    font-size: 60px; color: @secundario;
+}
 
 /*
 Redes
@@ -347,7 +387,7 @@ input, .select, textarea{
 input, .select, select{ height: @inputHeight; }
 
 textarea, input{padding: 10px;}
-textarea{height: 90px; resize: none;}
+textarea{height: 140px; resize: none;}
 
 input[type="button"], input[type="submit"]{background: @primario; color: @blanco;  padding: 0 24px; width: auto; border: none; font-weight: 600; }
 input[type="button"]:hover, input[type="submit"]:hover{background: @secundario;}
@@ -384,7 +424,7 @@ input[type="radio"]:checked + label span:after{content: "\f111"; color: @primari
 
 /* Google MAPS */
 #Gmap{
-    width: 100%; height: 300px; left: 0px; top: 0px; position: relative;
+    width: 100%; height: 175px; left: 0px; top: 0px; position: relative;
 
     .oficinas {
         line-height: 17px;
@@ -424,6 +464,26 @@ input[type="radio"]:checked + label span:after{content: "\f111"; color: @primari
     .slider-1{background-image: url(../img/slide-1.jpg);}
 }
 
+
+.slider-for {
+    img{max-width: 100%; max-height: 400px; margin: 0 auto;width: 100%;object-fit: cover;}
+    .mains{width: 100%; display: inline-block; height: 420px; background-repeat: no-repeat; background-position: center; background-size: cover; cursor: pointer;}
+}
+
+.slider-nav{
+    div:first-child{height: 140px;}
+    .thumbs{width: 100%; display: inline-block; height: 140px; background-repeat: no-repeat; background-position: center; background-size: cover; cursor: pointer;}
+    .slick-slide{
+        margin-bottom: 30px;
+    }
+    .slick-current{
+        position: relative;
+        &::before{content: ''; background-color: #dda100; opacity: 0.8; width: 100%; height: 100%; top: 0px; left: 0px; position: absolute;}
+        &::after{content: "\f002";width: 100%;height: 100%; color: #fff;font-family: "Font Awesome 5 Free"; font-weight: 900;position: absolute; left:0;top:0;display: flex;align-items: center;justify-content: center;font-size: 38px;}
+    }
+
+    .slick-list{height: 140px;}
+}
 /* PC FULL y PC MEDIUM */
 @media (min-width: 980px){
 }

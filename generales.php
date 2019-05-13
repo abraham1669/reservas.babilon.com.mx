@@ -14,7 +14,7 @@ curl_setopt_array($curl, array(
 $resp = curl_exec($curl);
 $respuesta = json_decode($resp, true);
 $hotel = $respuesta["hotel"];
-// print("<pre>".print_r($respuesta,true)."</pre>");
+print("<pre>".print_r($respuesta,true)."</pre>");
 ?>
 <!DOCTYPE html>
 <html lang="en">

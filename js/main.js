@@ -130,24 +130,42 @@ $(document).ready(function () {
 
     $( "#destino" ).autocomplete({
       source: function( request, response ) {
-         $.ajax({
+        $.ajax({
             url: $url + "includes/_destinos.php",
             type: 'POST',
             dataType: "JSON",
             data: {
-             search: request.term
-         },
-         success: function( data ) {
-             response( data );
-         }
-     });
-     },
-     select: function (event, ui) {
-       $('#destino').val(ui.item.label); 
-       $('#valor').val(ui.item.value); 
-       return false;
-   }
+                search: request.term
+            },
+            success: function( data ) {
+                response( data );
+            }
+        });
+    },
+    select: function (event, ui) {
+        $('#destino').val(ui.item.label); 
+        $('#valor').val(ui.item.value); 
+        return false;
+    }
 });
+
+
+function dinamico(){
+    var head = $("#header-main").innerHeight();
+    var footer = $("#footer-main").innerHeight();
+    var ventana = $(window).height();
+    var final = ventana - (head+footer);
+    
+    if($(".dinamico").innerHeight() < final ){
+        $(".dinamico").innerHeight(final);
+    }
+}
+
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0
+    })
 
     //DATE PICKER
     //    $(".datepicker").datepicker({

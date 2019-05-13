@@ -8,11 +8,12 @@
 /**
  * Define database parameters here
  */
-define("DB_USER", 'your_username');
-define("DB_PASSWORD", 'your_password');
-define("DB_NAME", 'your_db_name');
+
+define("DB_USER", 'babilonc_reservas');
+define("DB_PASSWORD", 'Reservas.2019!');
+define("DB_NAME", 'babilonc_reservas');
 define("DB_HOST", 'localhost');
-define("BACKUP_DIR", 'backup-db'); // Comment this line to use same script's directory ('.')
+define("BACKUP_DIR", 'db'); // Comment this line to use same script's directory ('.')
 define("TABLES", '*'); // Full backup
 //define("TABLES", 'table1, table2, table3'); // Partial backup
 define("CHARSET", 'utf8');
