@@ -1,44 +1,38 @@
-<form id="filters">
-	<input type="text" name="hotel" placeholder="Search by hotel name" />
-	<div class="h20"></div>
-	<p><strong>FILTERS HOTEL BY</strong></p>
-	<!-- <p class="destacado2">PRICE PER NIGHT</p>
-	<div id="slider-range"></div>
-	<div class="h10"></div>
-	<input type="text" id="minimo" value="Min. $0" class="rangos" readonly> 
-	<input type="text" id="maximo" value="Max. $0" class="rangos" readonly> 
-	<input type="hidden" name="rango" id="rango" /> -->
 
-	<!-- <div class="h30"></div> -->
+<input type="text" name="hotel" placeholder="Search by hotel name" />
+<div class="h20"></div>
+<p><strong>FILTERS HOTEL BY</strong></p>
+<p class="destacado2">Categoría</p>
+<?php 
+$categorias =  "";
+$paises =  "";
+if($_POST["accion"] && $_POST["accion"] == "filtrar_categorias"){
+	$categorias =  $_POST["class"];
+} 
+if($_POST["accion"] && $_POST["accion"] == "filtrar_pais"){
+	$paises =  $_POST["country"];
+} 
+if($_POST["accion"] && $_POST["accion"] == "filtrar_plan"){
+	$plan =  $_POST["plus"];
+} 
+?>
+<form action="<?php echo base_url; ?>hotels" method="POST" id="frm-category" data-categoria = "<?php echo $categorias; ?>">
+	<input id="chk6" type="radio" class="category_filter" name="class" value="5*" /> <label for="chk6"><span></span><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /></label>
+	<div class="h5"></div>
+	<input id="chk7" type="radio" class="category_filter" name="class" value="4*" /> <label for="chk7"><span></span><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /></label>
+	<div class="h5"></div>
+	<input id="chk8" type="radio" class="category_filter" name="class" value="3*" /> <label for="chk8"><span></span><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /></label>
+	<div class="h5"></div>
+	<input id="chk8" type="radio" class="category_filter" name="class" value="2*" /> <label for="chk8"><span></span><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /></label>
+	<div class="h5"></div>
+	<input id="chk8" type="radio" class="category_filter" name="class" value="1*" /> <label for="chk8"><span></span><img src="<?=base_url;?>img/star.png" alt="Star" /></label>
+	<input type="hidden" name="accion" value="filtrar_categorias">
+</form>
 
-	<!-- <input id="chk1" type="checkbox" name="plus" /> <label for="chk1"><span></span><i class="fas fa-mug-hot"></i> Free Breackfast</label>
-	<div class="h5"></div>
-	<input id="chk2" type="checkbox" name="plus" /> <label for="chk2"><span></span><i class="fas fa-swimming-pool"></i> Pool</label>
-	<div class="h5"></div>
-	<input id="chk3" type="checkbox" name="plus" /> <label for="chk3"><span></span><i class="fas fa-wifi"></i> Free Wifi</label>
-	<div class="h5"></div>
-	<input id="chk4" type="checkbox" name="plus" /> <label for="chk4"><span></span><i class="fas fa-car"></i> Free Parking</label>
-	<div class="h5"></div>
-	<input id="chk5" type="checkbox" name="plus" /> <label for="chk5"><span></span><i class="fas fa-paw"></i> Pet friendly</label>
-
-	<div class="h30"></div> -->
-
-	<p class="destacado2">Categoría</p>
-
-	<input id="chk6" type="radio" name="class" value="5*" checked /> <label for="chk6"><span></span><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /></label>
-	<div class="h5"></div>
-	<input id="chk7" type="radio" name="class" value="4*" /> <label for="chk7"><span></span><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /></label>
-	<div class="h5"></div>
-	<input id="chk8" type="radio" name="class" value="3*" /> <label for="chk8"><span></span><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /></label>
-	<div class="h5"></div>
-	<input id="chk8" type="radio" name="class" value="2*" /> <label for="chk8"><span></span><img src="<?=base_url;?>img/star.png" alt="Star" /><img src="<?=base_url;?>img/star.png" alt="Star" /></label>
-	<div class="h5"></div>
-	<input id="chk8" type="radio" name="class" value="1*" /> <label for="chk8"><span></span><img src="<?=base_url;?>img/star.png" alt="Star" /></label>
-
-	<div class="h30"></div>
-
+<div class="h30"></div>
+<form action="<?php echo base_url; ?>hotels" id="frm-country" method="POST" data-pais = "<?php echo $paises; ?>">
 	<div class="select">
-		<select>
+		<select id="country_filter" name="country">
 			<option>Selecciona un país...</option>
 			<?php 
 			$countries = $database->select("hb_countries", "*");
@@ -50,19 +44,20 @@
 			?>
 		</select>
 	</div>
-	<!-- <div class="select"><select><option>Property type</option></select></div> -->
+	<input type="hidden" name="accion" value="filtrar_pais">
+</form>
+<div class="h30"></div>
 
-	<div class="h30"></div>
-
-	<p class="destacado2">Plan</p>
-	<input id="chk9" type="radio" name="plus" /> <label for="chk9"><span></span> Todo Incluído</label>
+<p class="destacado2">Plan</p>
+<form action="<?php echo base_url; ?>hotels" method="POST" id="frm-plan" data-plan = "<?php echo $plan; ?>">
+	<input id="chk9" type="radio" class="plan_filter" value="AI" name="plus" /> <label for="chk9"><span></span> Todo Incluído</label>
 	<div class="h5"></div>
-	<input id="chk10" type="radio" name="plus" /> <label for="chk10"><span></span> Desayuno Americano</label>
+	<input id="chk10" type="radio" class="plan_filter" value="AB" name="plus" /> <label for="chk10"><span></span> Desayuno Americano</label>
 	<div class="h5"></div>
-	<input id="chk11" type="radio" name="plus" /> <label for="chk11"><span></span> Desayuno Continental</label>
+	<input id="chk11" type="radio" class="plan_filter" value="CB" name="plus" /> <label for="chk11"><span></span> Desayuno Continental</label>
 	<div class="h5"></div>
-	<input id="chk12" type="radio" name="plus" /> <label for="chk12"><span></span> Alojamiento y Desayuno</label>
+	<input id="chk12" type="radio" class="plan_filter" value="BB" name="plus" /> <label for="chk12"><span></span> Alojamiento y Desayuno</label>
 	<div class="h5"></div>
-	<input id="chk13" type="radio" name="plus" /> <label for="chk13"><span></span> Solo Habitación</label>
-
+	<input id="chk13" type="radio" class="plan_filter" value="RO" name="plus" /> <label for="chk13"><span></span> Solo Habitación</label>
+	<input type="hidden" name="accion" value="filtrar_plan">
 </form>

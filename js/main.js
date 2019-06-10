@@ -97,7 +97,7 @@ $(document).ready(function () {
                     $("#ajaxBusy").fadeOut(300);
                     $("#frm-gral").fadeIn();
                 }else{
-                    window.location.replace($url+"gracias");
+                    window.location.replace($url+"thanks");
                 }
             });
         }else{
@@ -150,16 +150,16 @@ $(document).ready(function () {
 });
 
 
-function dinamico(){
-    var head = $("#header-main").innerHeight();
-    var footer = $("#footer-main").innerHeight();
-    var ventana = $(window).height();
-    var final = ventana - (head+footer);
-    
-    if($(".dinamico").innerHeight() < final ){
-        $(".dinamico").innerHeight(final);
+    function dinamico(){
+        var head = $("#header-main").innerHeight();
+        var footer = $("#footer-main").innerHeight();
+        var ventana = $(window).height();
+        var final = ventana - (head+footer);
+        
+        if($(".dinamico").innerHeight() < final ){
+            $(".dinamico").innerHeight(final);
+        }
     }
-}
 
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',

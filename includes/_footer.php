@@ -22,28 +22,49 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="<?= base_url; ?>js/plugins.js"></script>
 <script src="<?= versionarArchivo('js/main.js') ?>"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script>
+	$("#search-hotels").click(function(){
+		$(this).fadeOut();
+		$("#ajaxBusy").fadeIn(300);
+		let pass = "1";
+		$('.formulario-informacion input, .formulario-informacion select').each(function () {
+			let data = $(this).val();
+			if (data !== "") {
+				obj[$(this).attr('name')] = data;
+			}
+			$(this).removeClass('error');
+			if (data === '' && (!$(this).hasClass('norequired'))) {
+				$(this).addClass('error');
+				pass = "0";
+				return false;
+			}
+		});
+		if (pass !== "0") {
+			$("#frm-hotels").submit();
+		}else{
+			$("#ajaxBusy").fadeOut(300);
+			$(this).fadeIn();
+		}
+	});
 	$( function() {
 		var dateFormat = "mm/dd/yy",
-			from = $( "#from" )
-				.datepicker({
-					defaultDate: "+1w",
-					changeMonth: true,
-					numberOfMonths: 3
-				})
-				.on( "change", function() {
-					to.datepicker( "option", "minDate", getDate( this ) );
-				}),
-			to = $( "#to" ).datepicker({
-				defaultDate: "+1w",
-				changeMonth: true,
-				numberOfMonths: 3
-			})
-			.on( "change", function() {
-				from.datepicker( "option", "maxDate", getDate( this ) );
-			});
+		from = $( "#from" )
+		.datepicker({
+			defaultDate: "+1w",
+			numberOfMonths: 3
+		})
+		.on( "change", function() {
+			to.datepicker( "option", "minDate", getDate( this ) );
+		}),
+		to = $( "#to" ).datepicker({
+			defaultDate: "+1w",
+			numberOfMonths: 3
+		})
+		.on( "change", function() {
+			from.datepicker( "option", "maxDate", getDate( this ) );
+		});
 
 		function getDate( element ) {
 			var date;
@@ -56,4 +77,4 @@
 			return date;
 		}
 	} );
-	</script>
+</script>

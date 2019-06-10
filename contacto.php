@@ -102,7 +102,44 @@ require_once 'includes/_menu.php';
             <div class="col-sm-4">
                 <textarea name="mensaje" placeholder="Mensaje:"></textarea>
             </div>
-
+            <?php 
+            if($_POST){
+                ?>
+                <div class="h20"></div>
+                <div class="col-sm-12">
+                    <h3 class="tcenter">Datos de la Reservación</h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="hotel">Hotel</label>
+                            <input type="text" name="hotel" placeholder="Hotel" value="<?php echo $_POST["hotel"] ?>" />
+                            <label for="from">Fecha de llegada</label>
+                            <input type="text" name="from" placeholder="Fecha Llegada" value="<?php echo $_POST["from"] ?>" />
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="ubicacion">Ubicación</label>
+                            <input type="text" name="ubicacion" placeholder="Ubicación" value="<?php echo $_POST["destino"].", ".$_POST["state"].", ".$_POST["country"]; ?>" />
+                            <label for="to">Fecha de salida</label>
+                            <input type="text" name="to" placeholder="Fecha Salida" value="<?php echo $_POST["to"] ?>" />
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="adults">Adultos</label>
+                            <input type="text" name="adults" placeholder="Adultos" value="<?php echo $_POST["adults"] ?>" />
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="children">Niños</label>
+                            <input type="text" name="children" placeholder="Niños" value="<?php echo $_POST["children"] ?>" />
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="rooms">Cuartos</label>
+                            <input type="text" name="rooms" placeholder="Cuartos" value="<?php echo $_POST["rooms"] ?>" />
+                        </div>
+                    </div>
+                </div>
+                <div class="h20"></div>
+                <?php
+            }
+            ?>
             <div class="col-sm-4">
                 <p>
                     <strong>IMPORTANTE:</strong><br/>
