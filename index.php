@@ -56,20 +56,20 @@ require_once 'includes/_menu.php';
 		</div>
 		<div class="h20"></div>
 		<?php
-		$hoteles = $database->rand("hb_hotels", ["images","s2c", "name", "description","code"],["LIMIT" => 4]);
+		$hoteles = $database->rand("hb_hotels", ["images","categoryCode", "name", "description","code"],["LIMIT" => 4]);
 		foreach ($hoteles as $key => $hotel) {
 			$imagenes = $hotel["images"];
-			$photos =  explode("**",$imagenes);
+			$photos =  json_decode($imagenes);
 			?>
 
 			<div class="col-sm-3">
 				<div class="destino">
 					<img src="" alt="">
-					<div class="imagen" style="background-image: url('http://photos.hotelbeds.com/giata/<?php echo $photos[0] ?>');"></div>
+					<div class="imagen" style="background-image: url('http://photos.hotelbeds.com/giata/<?php echo $photos[0]->path ?>');"></div>
 					<div class="descripcion">
 						<div class="stars">
 							<?php 
-							$estrellas = convierte_estrellas($hotel["s2c"]);
+							$estrellas = convierte_estrellas($hotel["categoryCode"]);
 							echo $estrellas["texto"];
 							?>
 						</div>

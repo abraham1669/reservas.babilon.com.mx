@@ -49,32 +49,21 @@
 		}
 	});
 	$( function() {
-		var dateFormat = "mm/dd/yy",
-		from = $( "#from" )
-		.datepicker({
+		$("#checkin").datepicker({
+			dateFormat: 'yy-mm-dd',
 			defaultDate: "+1w",
-			numberOfMonths: 3
-		})
-		.on( "change", function() {
-			to.datepicker( "option", "minDate", getDate( this ) );
-		}),
-		to = $( "#to" ).datepicker({
-			defaultDate: "+1w",
-			numberOfMonths: 3
-		})
-		.on( "change", function() {
-			from.datepicker( "option", "maxDate", getDate( this ) );
-		});
-
-		function getDate( element ) {
-			var date;
-			try {
-				date = $.datepicker.parseDate( dateFormat, element.value );
-			} catch( error ) {
-				date = null;
+			numberOfMonths: 3,
+			onClose: function (selectedDate) {
+				$("#checkout").datepicker("option", "minDate", selectedDate);
 			}
-
-			return date;
-		}
+		});
+		$("#checkout").datepicker({
+			dateFormat: 'yy-mm-dd',
+			defaultDate: "+1w",
+			numberOfMonths: 3,
+			onClose: function (selectedDate) {
+				$("#checkin").datepicker("option", "maxDate", selectedDate);
+			}
+		});
 	} );
 </script>
